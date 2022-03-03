@@ -1,0 +1,7 @@
+Teacher
+has_many :classes
+:name - string
+
+Class
+belongs_to :teacher
+:title - string, :time - string. :teacher_id - integer, :description - string
