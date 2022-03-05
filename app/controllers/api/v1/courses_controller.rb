@@ -3,18 +3,16 @@ class Api::V1::CoursesController < ApplicationController
     before_action :set_teacher
 
     def index
-        @courses = Course.all
+        @courses = @teacher.courses
         render json: @courses
     end
-
-    
 
     def show
         @course = Course.find(params[:id])
     end
 
     def create
-        @course = Course.create(course_params)
+        @course = @teacher.courses.new(course_params)
         if @course.save
             render json: @course
         else
