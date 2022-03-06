@@ -1,9 +1,9 @@
 class Api::V1::CoursesController < ApplicationController
 
-    before_action :set_teacher
+    # before_action :set_teacher
 
     def index
-        @courses = @teacher.courses
+        @courses = Course.all
         render json: @courses
     end
 
