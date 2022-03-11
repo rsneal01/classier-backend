@@ -6,6 +6,7 @@ class Api::V1::TeachersController < ApplicationController
     end
 
     def create
+       
         @teacher = Teacher.create(teacher_params)
         if @teacher.save
             render json: @teacher
