@@ -14,7 +14,7 @@ class Api::V1::CoursesController < ApplicationController
     def create
         @course = @teacher.courses.new(course_params)
         if @course.save
-            render json: @course
+            render json: @teacher
         else
             render json: {error: 'Error creating course'}
         end
