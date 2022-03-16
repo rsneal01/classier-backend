@@ -22,7 +22,9 @@ class Api::V1::CoursesController < ApplicationController
 
     def destroy
         @course = Course.find(params[:id])
+        @teacher = Teacher.find(@course.teacher_id)
         @course.destroy
+        render json: @teacher
     end
 
     private
