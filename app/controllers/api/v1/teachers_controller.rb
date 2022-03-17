@@ -19,6 +19,13 @@ class Api::V1::TeachersController < ApplicationController
         @teacher = Teacher.find(params[:id])
     end
 
+    def update
+        @teacher = Teacher.find(params[:id])
+        @teacher.update(name: params["teacher"]["name"])
+        @teacher.save
+        render json: @teacher
+    end
+
     def destroy
         @teacher = Teacher.find(params[:id])
         @teacher.destroy
