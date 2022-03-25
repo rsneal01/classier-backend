@@ -9,11 +9,16 @@ class Api::V1::CoursesController < ApplicationController
 
     def show
         @course = Course.find(params[:id])
+        render json: @course
     end
 
     def create
-        @course = @teacher.courses.new(course_params)
+        # binding.pry
+        @teacher = Teacher.find_by(id: params[:teacher_id])
+        @course = @teacher.courses.create(course_params)
+        # @course = Course.create(course_params)
         if @course.save
+            
             render json: @teacher
         else
             render json: {error: 'Error creating course'}
